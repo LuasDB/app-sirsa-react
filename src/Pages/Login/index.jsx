@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { useAuth } from "../../Context/AuthContext";
-import  logo  from './../../assets/logo_omegasys.png'
-import logoDark from './../../assets/omegasys_white.png'
+import  logo  from './../../assets/logo_sirsa.png'
+import logoDark from './../../assets/logo_sirsa.png'
 import { useMediaQuery } from "react-responsive";
+import Logo from "@/Components/Logo";
 
 export default function Login(){
 
@@ -73,13 +74,12 @@ export default function Login(){
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
       <div className="max-w-md w-full p-6 space-y-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
          <div className={`flex flex-col items-center gap-2 dark:text-white`}>
-                  <img
-                    src={isDarkMode ? logoDark : logo}
-                    alt="Logo de la empresa"
-                    className="h-10 object-contain"
-                  />
+          
+            <Logo isDarkMode={isDarkMode}  className="w-20 h-20"/>
+            
+          
                   <span className={`${isMobile?'text-[12px] ':'text-xl font-semibold block ' }   text-gray-800 dark:text-white  `}>
-                    Soporte OMEGASYS
+                    Laboratorio SI Radiación
                   </span>
                 </div>
         <form className="mt-8 space-y-6 flex flex-col justify-center" >

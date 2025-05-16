@@ -4,11 +4,11 @@ import Card from "../Card"
 import Col from "./../Col"
 import { CiLogout } from "react-icons/ci"
 import { useAuth } from './../../Context/AuthContext'
-import  logo  from './../../assets/logo_omegasys.png'
-import logoDark from './../../assets/omegasys_white.png'
+import Logo from "../Logo"
+
 
 export default function MenuBar({...props}) {
-  const {isMobile} = props
+  const {isMobile,company} = props
   const { user, logout} = useAuth()
   const navigate = useNavigate()
   const [isDarkMode,setIsDarkMode] = useState(false)
@@ -37,21 +37,17 @@ export default function MenuBar({...props}) {
       <div className={`${isMobile?'flex-col':' flex-row'} flex items-center justify-between w-full`}>
        
         <div className={`${isMobile?'flex-row':' flex-row'} flex items-center gap-2 dark:text-white`}>
-          <img
-            src={isDarkMode ? logoDark : logo}
-            alt="Logo de la empresa"
-            className="h-10 object-contain"
-          />
+          <Logo isDarkMode={isDarkMode}/>
           <span className={`${isMobile?'text-[12px] ':'text-xl font-semibold block ' }   text-gray-800 dark:text-white  `}>
-            Soporte OMEGASYS
+           {company}
           </span>
         </div>
 
         {/* Usuario + Logout */}
         <div className={`${isMobile ? 'mt-4 flex-row justify-between w-full' : ' items-center gap-4 justify-between'} flex`}>
           <div className="text-right sm:block">
-            <div className="text-[10px] font-medium text-gray-800 dark:text-white">{user.nombre}</div>
-            <div className="text-xs text-gray-500">{user.company}</div>
+            <div className="text-[10px] font-medium text-gray-800 dark:text-white">{user.name}</div>
+            <div className="text-xs text-gray-500">DEPTO. {user.department.toUpperCase()}</div>
           </div>
           <button
             onClick={handleLogout}

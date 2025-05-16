@@ -1,59 +1,29 @@
-import { IoPeopleSharp } from "react-icons/io5"
-import { RiCustomerService2Fill } from "react-icons/ri"
-import { MdAccountCircle } from "react-icons/md"
-import Customers from "@/Views/Admin/Customers"
-import {TicketsView} from "@/Views/Users/TicketsView"
-import {Tickets} from "@/Views/Admin/Tickets"
-import {RequestHours} from "@/Views/Admin/RequestHours"
-import { ConfigView } from "@/Views/Users/Config"
-import { MdOutlineRequestPage } from "react-icons/md"
+import Main from "./Views/Calibrations/Main";
+import Main2 from "./Views/Calibrations/Main2";
+
+import { IoMdSpeedometer } from "react-icons/io";
+
+
 
 const routes = [
     {
-        path:'/clientes',
-        name:'Clientes',
-        icon:<IoPeopleSharp />,
-        component:<Customers />,
+        path:'/calibrations',
+        name:'Calibraciones',
+        icon:<IoMdSpeedometer />,
+        component:<Main />,
         type:'menu',
-        user:'admin'
-
+        user:'admin',
+        department:'tecnico'
     },
     {
-        path:'/ticketsAdmin',
-        name:'Tickets',
-        icon:<RiCustomerService2Fill />,
-        component:<Tickets />,
+        path:'/calibrations2',
+        name:'Calibraciones',
+        icon:<IoMdSpeedometer />,
+        component:<Main2 />,
         type:'menu',
-        user:'admin'
-
+        user:'admin',
+        department:'tecnico'
     },
-    {
-        path:'/requestHoursService',
-        name:'Solicitudes',
-        icon:<MdOutlineRequestPage />,
-        component:<RequestHours />,
-        type:'menu',
-        user:'admin'
-
-    },
-    {
-        path:'/account',
-        name:'Mi cuenta',
-        icon: <MdAccountCircle />,
-        component:<ConfigView />,
-        type:'menu',
-        user:'client'
-
-    },
-    {
-        path:'/tickets',
-        name:'Tickets',
-        icon: <RiCustomerService2Fill />,
-        component:<TicketsView />,
-        type:'menu',
-        user:'client'
-
-    }
 ]
 
 export { routes }

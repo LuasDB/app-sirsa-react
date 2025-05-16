@@ -3,7 +3,7 @@ import html2pdf from 'html2pdf.js';
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import logo from '@/assets/logo_omegasys.png'
+import Logo from '../Logo';
 
 const TicketPDF = ({ ticket }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +61,7 @@ const TicketPDF = ({ ticket }) => {
       >
         {/* Logo de la empresa */}
         <div className="flex items-center justify-between mb-4">
-          <img src={logo} alt="Logo" className="w-32" />
+          <Logo isDarkMode={false}/>
           <div className="text-right">
             <h1 className="text-2xl font-bold">Ticket de Soporte Técnico</h1>
             <p className="text-sm text-gray-500">#{ticket._id}</p>

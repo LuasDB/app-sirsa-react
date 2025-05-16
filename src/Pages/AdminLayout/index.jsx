@@ -42,7 +42,7 @@ export default function AdminLayout(){
         
         <div className='min-h-screen items-center bg-gray-50 dark:bg-gray-900 text-center text-gray-900 dark:text-white'>
             <Row className='fixed z-10 items-start flex justify-center md:mr-10 '>
-                    <MenuBar isMobile={isMobile}/>
+                    <MenuBar isMobile={isMobile} company={'S.I. Radiación'}/>
             </Row>
         
             
