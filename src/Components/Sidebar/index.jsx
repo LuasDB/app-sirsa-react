@@ -35,7 +35,7 @@ export default function Sidebar({...props}){
                                 return (
                                     <Link to={`${basePath}${route.path}`} key={`sidebar-${index}`}>
                                     <li  
-                                    className={` p-3 rounded-md  mb-4 flex gap-4 items-center cursor-pointer text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${selected === index ? 'bg-indigo-400':''}`}
+                                    className={` p-3 rounded-md  mb-4 flex gap-4 items-center cursor-pointer text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 ${selected === index ? 'bg-gray-400 text-yellow-400':''}`}
                                     onClick={()=>handleSelect(route,index)}>
                                     
                                     {route.icon} <span>{route.name}</span>

@@ -2,10 +2,10 @@
 import { useState } from 'react'
 import { Route,Routes } from 'react-router-dom'
 
-import Row from './../../Components/Row'
-import Col from './../../Components/Col'
+import Row from '../../Components/Row'
+import Col from '../../Components/Col'
 import MenuBar from '../../Components/MenuBar'
-import Sidebar from './../../Components/Sidebar'
+import Sidebar from '../../Components/Sidebar'
 import { routes } from '../../routes'
 import { useAuth } from '@/Context/AuthContext'
 import { RollerCoaster } from 'lucide-react'
@@ -42,7 +42,7 @@ export default function AdminLayout(){
         
         <div className='min-h-screen items-center bg-gray-50 dark:bg-gray-900 text-center text-gray-900 dark:text-white'>
             <Row className='fixed z-10 items-start flex justify-center md:mr-10 '>
-                    <MenuBar isMobile={isMobile} company={'S.I. Radiación'}/>
+                <MenuBar isMobile={isMobile} company={'S.I. Radiación'}/>
             </Row>
         
             
@@ -57,7 +57,7 @@ export default function AdminLayout(){
                     </svg>
                 </button>
                 )}
-                <Col size={3} className={`${isMobile?'w-full relative':'fixed w-[250px] top-[100px] left-0 bottom-0 block'} ${sidebarOpen ? 'block':'hidden'}`}>
+                <Col  className={`${isMobile?'w-full relative':'fixed w-[250px] max-w-[250px] top-[100px] left-0 bottom-0 block'} ${sidebarOpen ? 'block':'hidden'}`}>
                     {isMobile && (
                         <button 
                         onClick={toggleSidebar}

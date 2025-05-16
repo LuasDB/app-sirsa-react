@@ -14,7 +14,7 @@ import {
   DialogTrigger,
   DialogClose, // Import DialogClose for the cancel button
 } from "@/components/ui/dialog"
-import ticketsService from '@/API/ticketsService'
+import ticketsService from '@/API/calibrationsService'
 import { useAuth } from '@/Context/AuthContext'
 
 export function PurchaseHoursForm() {

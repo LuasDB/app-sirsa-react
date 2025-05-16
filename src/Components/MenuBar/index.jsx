@@ -1,7 +1,6 @@
 import { useEffect,useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Card from "../Card"
-import Col from "./../Col"
 import { CiLogout } from "react-icons/ci"
 import { useAuth } from './../../Context/AuthContext'
 import Logo from "../Logo"
