@@ -13,7 +13,7 @@ import { shortDate } from "@/Utility/formatDate";
 
 export default function TableArrived({data,onViewService}) {
   const getStatusColor = (status) => {
-    return status === 'open' ? 'bg-green-500' : 'bg-gray-500'
+    return status ? 'bg-green-500' : 'bg-red-500'
   }
 
   const getPriorityColor = (priority) => {
@@ -30,11 +30,11 @@ export default function TableArrived({data,onViewService}) {
       <Table className='border-gray-700'>
         <TableHeader className=' rounded-md bg-gray-700 border '>
           <TableRow>
-            <TableHead className='text-yellow-400'>Cliente</TableHead>
-            <TableHead className='text-yellow-400'>Equipo</TableHead>
-            <TableHead className='text-yellow-400'>Fecha de Ingreso</TableHead>
-            <TableHead className='text-yellow-400'>Estado actual</TableHead>
-            <TableHead className='text-yellow-400'>Acciones</TableHead>
+            <TableHead className='text-yellow-400 '>Cliente</TableHead>
+            <TableHead className='text-yellow-400 '>Equipo</TableHead>
+            <TableHead className='text-yellow-400 '>Serie</TableHead>
+            <TableHead className='text-yellow-400 '>Fecha de Ingreso</TableHead>
+            <TableHead className='text-yellow-400 '>Condiciones del equipo</TableHead>
 
           </TableRow>
         </TableHeader>
@@ -46,9 +46,9 @@ export default function TableArrived({data,onViewService}) {
             onClick={()=>onViewService(item)}>
             <TableCell>{item.cliente}</TableCell>
             <TableCell>{item.marca} {item.modelo}</TableCell>
+            <TableCell>{item.serie}</TableCell>
             <TableCell>{shortDate(item.fechaIngreso)}</TableCell>
-            <TableCell>{item.stage.toUpperCase()}</TableCell>
-            <TableCell>uno</TableCell>
+            <TableCell><Badge className={getStatusColor(item.enciende)}>{item.enciende ? 'Enciende':'No enciende'}</Badge> <Badge className={getStatusColor(item.detecta)}>{item.detecta ? 'Detecta':'No detecta'}</Badge></TableCell>
             
           </TableRow>
           ))}

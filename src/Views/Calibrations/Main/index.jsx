@@ -43,7 +43,7 @@ export default function Main(){
     const { services,loading } = useGetServices({service:'all',year:`${new Date().getFullYear()}`})
 
     return (
-        <div className='contairner mx-auto space-y-2'>
+        <div className='contairner mx-auto space-y-2 '>
             <Toaster />
 
             {loading ? (
@@ -76,7 +76,7 @@ export default function Main(){
                             Solicitudes de Calibración Pendientes
                         </CardTitle>
                         <CardDescription>
-                            Equipos actualmente en alguna etapa del flujo de calibración.
+                            Equipos actualmente se encuentran en espera de una orden de servicio.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
