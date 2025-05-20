@@ -7,7 +7,6 @@ import TableInProcess from '@/Components/TableInProcess'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-
 import {
     Card,
     CardContent,
@@ -18,6 +17,7 @@ import {
   } from "@/components/ui/card";
 import {
     FileText,
+    CirclePlus,
     MoreHorizontal,
     PlusCircle,
     Search,
@@ -34,13 +34,24 @@ import { Toaster,toast } from 'sonner'
 import { useAuth } from '@/Context/AuthContext'
 import { useMediaQuery } from 'react-responsive'
 import { useGetServices } from '@/Hooks/useGetServices.js'
+import { Button } from '@/components/ui/button'
+import InfoService from '@/Components/InfoService'
+import FormNewRegister from '@/Components/FormNewRegister'
+
 
 
 export default function Main(){
 
     const [searchTerm,setSearchTerm] = useState(null)
     const [selectedService,setSelectedService] = useState(null)
+    const [section,setSection] = useState('arrived')
+    const [isModalOpen,setIsModalOpen]=useState(false)
     const { services,loading } = useGetServices({service:'all',year:`${new Date().getFullYear()}`})
+    
+    const constentSections = {
+        newRegister:<FormNewRegister register={null}/>,
+        arrived: <InfoService record={selectedService}/>
+    }
 
     return (
         <div className='contairner mx-auto space-y-2 '>
@@ -70,8 +81,19 @@ export default function Main(){
                         className="max-w-sm ml-auto"
                         />
                     </div>
-                    <CardHeader className="flex flex-col items-center md:items-start justify-between">
-                        <CardTitle className="flex items-center gap-2 text-gray-800 dark:text-white">
+                    <div className='w-full relative mt-4'>
+                        <Button className='absolute right-4 text bg-gray-600'
+                            onClick={()=>{
+                                setSection('newRegister')
+                                setIsModalOpen(true)
+                                }}>
+                            <CirclePlus /> Nuevo registro
+                        </Button>
+
+                        </div>
+                    <CardHeader className="flex flex-col items-center md:items-start justify-between ">
+                       
+                        <CardTitle className="flex items-center gap-2 text-gray-800 dark:text-white mt-7">
                             <ClipboardList />
                             Solicitudes de Calibración Pendientes
                         </CardTitle>
@@ -82,7 +104,10 @@ export default function Main(){
                     <CardContent>
                         <TableArrived 
                             data={services.filter(service=>service.stage === 'Arribo')}
-                            onViewService={setSelectedService}
+                            onViewService={(service)=>{
+                                setSelectedService(service)
+                                setSection('arrived')
+                                setIsModalOpen(true)}}
                         />
                     </CardContent>
                 </Card>
@@ -119,9 +144,11 @@ export default function Main(){
             
             
             <ModalViewService 
-                service={selectedService}
-                open={!!selectedService}
-                onClose={()=>setSelectedService(null)}
+                open={isModalOpen}
+                onClose={()=>{
+                    setIsModalOpen(false)
+                    }}
+                section={constentSections[section]}
             />
 
 
